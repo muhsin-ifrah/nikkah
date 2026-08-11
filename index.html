@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ifrah &amp; Muhsin — Walima Nikkah Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --emerald-deep:#3a0a12;
+    --emerald:#530f19;
+    --emerald-light:#7a1a26;
+    --gold:#d3ac5e;
+    --gold-soft:#ecd9a8;
+    --maroon:#9c2a3c;
+    --maroon-deep:#5c0f1b;
+    --ivory:#f6ecd8;
+    --ivory-dim:#d9c6a8;
+    --stone:#e9dcc0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:linear-gradient(180deg,var(--emerald-deep),var(--emerald) 40%,var(--emerald-deep));
+    color:var(--ivory);
+    font-family:'Cormorant Garamond', serif;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- decorative pattern ---------- */
+  .bg-pattern{
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.10;
+    background-image:
+      radial-gradient(circle at 10% 20%, transparent 0 18px, var(--gold) 18px 19px, transparent 19px),
+      radial-gradient(circle at 90% 80%, transparent 0 18px, var(--gold) 18px 19px, transparent 19px);
+    background-size:120px 120px;
+  }
+
+  /* ---------- Bismillah intro overlay ---------- */
+  #intro{
+    position:fixed; inset:0; z-index:100;
+    background:radial-gradient(ellipse at center, var(--emerald) 0%, var(--emerald-deep) 75%);
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    animation:introFade 3.6s ease forwards;
+    text-align:center; padding:20px;
+  }
+  #intro .bismillah{
+    font-family:'Amiri', serif; font-size:clamp(2rem,7vw,3.6rem); color:var(--gold);
+    opacity:0; animation:riseIn 1.6s ease forwards 0.3s; direction:rtl;
+    text-shadow:0 0 30px rgba(201,162,75,0.35);
+  }
+  #intro .translit{
+    font-size:1.1rem; letter-spacing:0.12em; color:var(--ivory-dim); margin-top:14px;
+    opacity:0; animation:riseIn 1.6s ease forwards 1s; text-transform:uppercase;
+  }
+  @keyframes riseIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes introFade{ 0%{opacity:1;} 78%{opacity:1;} 100%{opacity:0; visibility:hidden;} }
+
+  section{ position:relative; z-index:1; padding:90px 20px; max-width:820px; margin:0 auto; }
+
+  .eyebrow{
+    font-family:'Cinzel', serif; letter-spacing:0.3em; font-size:0.72rem;
+    color:var(--gold); text-transform:uppercase; text-align:center; margin-bottom:14px;
+  }
+  h1,h2{ font-family:'Cinzel', serif; text-align:center; color:var(--ivory); font-weight:500; }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity 1s ease, transform 1s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- divider ---------- */
+  .divider{ display:flex; align-items:center; justify-content:center; gap:14px; margin:26px auto; max-width:340px; }
+  .divider::before, .divider::after{ content:""; flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .divider span{ color:var(--gold); font-size:1.1rem; }
+
+  /* ---------- hero ---------- */
+  #hero{ padding-top:40px; text-align:center; }
+  .arch-wrap{ position:relative; max-width:420px; margin:0 auto 20px; }
+  .arch-wrap svg{ width:100%; height:auto; display:block; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.45)); }
+  .names{ font-family:'Cinzel', serif; font-size:clamp(2.1rem,7vw,3.3rem); margin:18px 0 4px; color:var(--gold); letter-spacing:0.03em; }
+  .amp{ color:var(--maroon); font-family:'Amiri', serif; font-style:italic; }
+  .subtitle{ color:var(--ivory-dim); font-size:1.15rem; letter-spacing:0.08em; }
+  .date-pill{
+    display:inline-block; margin-top:22px; padding:10px 28px; border:1px solid var(--gold);
+    border-radius:2px; color:var(--gold-soft); letter-spacing:0.12em; font-size:0.95rem;
+    background:rgba(201,162,75,0.06);
+  }
+
+  /* ---------- countdown ---------- */
+  #countdown-row{ display:flex; justify-content:center; gap:18px; margin-top:36px; flex-wrap:wrap; }
+  .cbox{ min-width:78px; padding:14px 8px; border:1px solid rgba(201,162,75,0.4); background:rgba(0,0,0,0.15); }
+  .cbox .num{ font-family:'Cinzel',serif; font-size:1.8rem; color:var(--gold); }
+  .cbox .lbl{ font-size:0.68rem; letter-spacing:0.15em; color:var(--ivory-dim); text-transform:uppercase; }
+
+  /* ---------- ayah / hadith cards ---------- */
+  .quote-card{
+    text-align:center; padding:38px 26px; border:1px solid rgba(201,162,75,0.3);
+    background:linear-gradient(180deg, rgba(201,162,75,0.05), transparent);
+    position:relative; margin:26px 0;
+  }
+  .quote-card::before, .quote-card::after{
+    content:""; position:absolute; width:26px; height:26px; border:2px solid var(--gold);
+  }
+  .quote-card::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .quote-card::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+  .arabic{ font-family:'Amiri', serif; direction:rtl; font-size:1.5rem; color:var(--gold-soft); line-height:2.1; margin-bottom:14px; }
+  .translation{ font-size:1.2rem; font-style:italic; color:var(--ivory); line-height:1.7; }
+  .attribution{ margin-top:14px; font-size:0.85rem; letter-spacing:0.1em; color:var(--gold); text-transform:uppercase; }
+
+  /* ---------- details ---------- */
+  .detail-grid{ display:grid; grid-template-columns:1fr; gap:22px; margin-top:30px; }
+  .detail-card{ text-align:center; padding:28px; border:1px solid rgba(201,162,75,0.25); background:rgba(0,0,0,0.15); }
+  .detail-card .icon{ font-size:1.6rem; color:var(--gold); margin-bottom:8px; }
+  .detail-card h3{ font-family:'Cinzel',serif; color:var(--ivory); font-weight:500; margin:6px 0; letter-spacing:0.04em; }
+  .detail-card p{ color:var(--ivory-dim); margin:4px 0; font-size:1.1rem; }
+  .map-btn{
+    display:inline-block; margin-top:14px; padding:10px 24px; border:1px solid var(--gold); color:var(--gold);
+    text-decoration:none; letter-spacing:0.1em; font-size:0.85rem; text-transform:uppercase; transition:background 0.3s, color 0.3s;
+  }
+  .map-btn:hover{ background:var(--gold); color:var(--emerald-deep); }
+
+  /* ---------- duas ---------- */
+  .dua-scroll{ display:flex; flex-direction:column; gap:20px; margin-top:30px; }
+
+  /* ---------- message wall ---------- */
+  #wall{ text-align:center; }
+  .msg-form{ display:flex; flex-direction:column; gap:14px; max-width:460px; margin:30px auto 10px; }
+  .msg-form input, .msg-form textarea{
+    background:rgba(255,255,255,0.04); border:1px solid rgba(201,162,75,0.4); color:var(--ivory);
+    padding:12px 14px; font-family:'Cormorant Garamond', serif; font-size:1.05rem; border-radius:2px;
+  }
+  .msg-form textarea{ min-height:90px; resize:vertical; }
+  .msg-form input:focus, .msg-form textarea:focus{ outline:2px solid var(--gold); }
+  .msg-form button{
+    background:var(--maroon); color:var(--ivory); border:none; padding:13px; letter-spacing:0.12em;
+    text-transform:uppercase; font-size:0.85rem; cursor:pointer; transition:background 0.3s;
+    font-family:'Cinzel', serif;
+  }
+  .msg-form button:hover{ background:var(--maroon-deep); }
+  .msg-status{ font-size:0.9rem; color:var(--gold-soft); min-height:20px; }
+  .wall-grid{ display:grid; grid-template-columns:1fr; gap:16px; margin-top:34px; text-align:left; }
+  .wish{ border:1px solid rgba(201,162,75,0.25); padding:18px 20px; background:rgba(0,0,0,0.15); }
+  .wish .who{ color:var(--gold); font-family:'Cinzel',serif; font-size:0.95rem; margin-bottom:6px; }
+  .wish .txt{ color:var(--ivory-dim); font-size:1.05rem; line-height:1.5; }
+  .empty-wall{ color:var(--ivory-dim); font-style:italic; margin-top:20px; }
+
+  footer{ text-align:center; padding:60px 20px 50px; color:var(--ivory-dim); }
+  footer .arabic{ font-size:1.3rem; }
+
+  @media(min-width:640px){
+    .detail-grid{ grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+
+<div id="intro">
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <div class="translit">In the name of Allah, the Most Gracious, the Most Merciful</div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="eyebrow reveal">You are lovingly invited to the Nikkah of</div>
+  <div class="arch-wrap reveal">
+  </div>
+
+  <div class="names reveal">Ifrah <span class="amp">&amp;</span> Muhsin</div>
+  <div class="subtitle reveal">request the honour of your presence</div>
+  <div class="date-pill reveal">22 . 08 . 2026 — Nikkah at 11:00 AM</div>
+
+  <div id="countdown-row" class="reveal">
+    <div class="cbox"><div class="num" id="cd-days">--</div><div class="lbl">Days</div></div>
+    <div class="cbox"><div class="num" id="cd-hours">--</div><div class="lbl">Hours</div></div>
+    <div class="cbox"><div class="num" id="cd-mins">--</div><div class="lbl">Mins</div></div>
+    <div class="cbox"><div class="num" id="cd-secs">--</div><div class="lbl">Secs</div></div>
+  </div>
+</section>
+
+<!-- QURAN VERSE -->
+<section>
+  <div class="eyebrow reveal">From the Noble Quran</div>
+  <div class="quote-card reveal">
+    <div class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</div>
+    <div class="translation">"And among His signs is that He created for you spouses from among yourselves, that you may find tranquility in them, and He placed between you love and mercy."</div>
+    <div class="attribution">Surah Ar-Rum · 30:21</div>
+  </div>
+</section>
+
+<!-- NIKKAH DETAILS -->
+<section>
+  <div class="eyebrow reveal">Walima &amp; Nikkah Details</div>
+  <h2 class="reveal">Join Us In Celebration</h2>
+  <div class="detail-grid">
+    <div class="detail-card reveal">
+      <div class="icon">☾</div>
+      <h3>Nikkah Ceremony</h3>
+      <p>Saturday, 22th August 2026</p>
+      <p>11:00 AM</p>
+    </div>
+    <div class="detail-card reveal">
+      <div class="icon">✦</div>
+      <h3>Venue</h3>
+      <p>Maas Community Hall</p>
+      <a class="map-btn" href="https://www.google.com/maps/place/Maas+Community+Hall/@10.7824493,75.9287794,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba7bb1a53741f89:0xc44e01546dab6a65!8m2!3d10.782444!4d75.9313543!16s%2Fg%2F1hm4qgtvs?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- DUAS -->
+<section>
+  <div class="eyebrow reveal">Duas For The Journey Ahead</div>
+  <div class="dua-scroll">
+    <div class="quote-card reveal">
+      <div class="arabic">بَارَكَ اللهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
+      <div class="translation">"May Allah bless you, and shower His blessings upon you, and join you together in goodness."</div>
+      <div class="attribution">Traditional dua for the newly married</div>
+    </div>
+    <div class="quote-card reveal">
+      <div class="arabic">رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا</div>
+      <div class="translation">"Our Lord, grant us from among our spouses and offspring comfort to our eyes, and make us leaders for the righteous."</div>
+      <div class="attribution">Surah Al-Furqan · 25:74</div>
+    </div>
+  </div>
+</section>
+
+<!-- HADITH -->
+<section>
+  <div class="eyebrow reveal">A Word From The Prophet ﷺ</div>
+  <div class="quote-card reveal">
+    <div class="translation" style="font-size:1.3rem;">"When a man marries, he has completed half of his faith, so let him fear Allah regarding the remaining half."</div>
+    <div class="attribution">Narrated in Al-Bayhaqi (Sunan)</div>
+  </div>
+</section>
+
+<!-- MESSAGE WALL -->
+<section id="wall">
+  <div class="eyebrow reveal">Leave Us Your Blessings</div>
+  <h2 class="reveal">A Word For The Couple</h2>
+  <p class="reveal" style="color:var(--ivory-dim);">No RSVP needed — just a message, dua, or wish for Ifrah &amp; Muhsin.</p>
+
+  <div class="msg-form reveal">
+    <input type="text" id="msg-name" placeholder="Your name" maxlength="60">
+    <textarea id="msg-text" placeholder="Write your message, dua or wishes here..." maxlength="500"></textarea>
+    <button id="msg-send" type="button">Send Blessing</button>
+    <div class="msg-status" id="msg-status"></div>
+  </div>
+
+  <div class="wall-grid" id="wall-grid"></div>
+</section>
+
+<footer>
+  <div class="divider"><span>❖</span></div>
+  <div class="arabic">جَزَاكُمُ اللهُ خَيْرًا</div>
+  <p>With love and gratitude,<br>Ifrah &amp; Muhsin</p>
+</footer>
+
+<script>
+// ---------- scroll reveal ----------
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.15});
+revealEls.forEach(el=>io.observe(el));
+
+// ---------- countdown ----------
+const target = new Date('2026-08-22T11:00:00+05:30').getTime();
+function tick(){
+  const now = Date.now();
+  let diff = target - now;
+  if(diff < 0) diff = 0;
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-days').textContent = d;
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+tick();
+setInterval(tick,1000);
+
+// ---------- message wall (persistent shared storage, with in-memory fallback) ----------
+let localWishes = [];
+const wallGrid = document.getElementById('wall-grid');
+const statusEl = document.getElementById('msg-status');
+
+function escapeHtml(str){
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+function renderWishes(list){
+  if(!list || list.length === 0){
+    wallGrid.innerHTML = '<div class="empty-wall">Be the first to leave a blessing for the couple.</div>';
+    return;
+  }
+  wallGrid.innerHTML = list.map(w => `
+    <div class="wish">
+      <div class="who">${escapeHtml(w.name)}</div>
+      <div class="txt">${escapeHtml(w.message)}</div>
+    </div>`).join('');
+}
+
+async function loadWishes(){
+  try{
+    const res = await window.storage.list('wish:', true);
+    if(!res || !res.keys || res.keys.length === 0){ renderWishes([]); return; }
+    const items = [];
+    for(const k of res.keys){
+      try{
+        const rec = await window.storage.get(k, true);
+        if(rec && rec.value) items.push(JSON.parse(rec.value));
+      }catch(e){ /* skip missing key */ }
+    }
+    items.sort((a,b)=> (b.ts||0) - (a.ts||0));
+    renderWishes(items);
+  }catch(e){
+    // storage not available in this environment — use local fallback
+    renderWishes(localWishes);
+  }
+}
+
+document.getElementById('msg-send').addEventListener('click', async ()=>{
+  const nameEl = document.getElementById('msg-name');
+  const textEl = document.getElementById('msg-text');
+  const name = nameEl.value.trim();
+  const message = textEl.value.trim();
+  if(!name || !message){
+    statusEl.textContent = 'Please add your name and a short message.';
+    return;
+  }
+  const entry = { name, message, ts: Date.now() };
+  const key = 'wish:' + entry.ts + '-' + Math.random().toString(36).slice(2,7);
+  try{
+    const result = await window.storage.set(key, JSON.stringify(entry), true);
+    if(!result){ throw new Error('save failed'); }
+    statusEl.textContent = 'Jazakumullahu khairan — your blessing has been saved.';
+  }catch(e){
+    localWishes.unshift(entry);
+    statusEl.textContent = 'Saved for this session. (Shared saving isn\'t available in this preview.)';
+  }
+  nameEl.value = '';
+  textEl.value = '';
+  loadWishes();
+});
+
+loadWishes();
+</script>
+
+</body>
+</html>
